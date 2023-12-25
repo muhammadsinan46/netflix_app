@@ -1,0 +1,6 @@
+
+
+final String Apikey = "d012025bfe1f050f5ccdf0b70bedf642";
+
+final String APiTocken ="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMDEyMDI1YmZlMWYwNTBmNWNjZGYwYjcwYmVkZjY0MiIsInN1YiI6IjYzNDI5NjZkMWI3YzU5MDA3ZTZkOWIxOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.HY19fiGD-18zSxi-fBxdJQvQxc4Jxvw7kREZe5m2yfE";
+
