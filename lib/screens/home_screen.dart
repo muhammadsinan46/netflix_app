@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:netflix/Api/uri_list.dart';
+
 import 'package:netflix/screens/details_screen.dart';
+import 'package:netflix/screens/splash_screen.dart';
 import 'package:netflix/widgets/carousal_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:netflix/widgets/custom_button.dart';
 
-List trendingMovies = [];
-List topratedMovies = [];
-List tvShows = [];
-List allMovies = [];
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: double.infinity,
                           height: 600,
                           child: CarouselSlider.builder(
-                              itemCount: trendingMovies.length,
+                              itemCount: trendinglist.length,
                               itemBuilder: (BuildContext context, int itemIndex,
                                   int pageViewIndex) {
                                 return InkWell(
@@ -92,29 +92,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .push(MaterialPageRoute(
                                             builder: (context) => DetailsScreen(
                                                   imageUrl:
-                                                      'http://image.tmdb.org/t/p/w500' +
-                                                          trendingMovies[
-                                                                  itemIndex]
-                                                              ['backdrop_path'],
+                                                      '$baseUrl/${trendinglist[itemIndex].posterPath}' 
+                                                       
+                                                            ,
                                                   title:
-                                                      trendingMovies[itemIndex]
-                                                          ['original_title'],
+                                                      '${trendinglist[itemIndex].title}'
+                                                         ,
                                                   date:
-                                                      trendingMovies[itemIndex]
-                                                          ['release_date'],
+                                                       '${trendinglist[itemIndex].releaseDate}',
                                                   rate:
-                                                      trendingMovies[itemIndex]
-                                                              ['vote_average']
-                                                          .toString(),
+                                                     '${trendinglist[itemIndex].voteAverage}',
                                                   overview:
-                                                      trendingMovies[itemIndex]
-                                                          ['overview'],
+                                                      '${trendinglist[itemIndex].overview}',
                                                 )));
                                   },
                                   child: Image.network(
-                                    'http://image.tmdb.org/t/p/w500' +
-                                        trendingMovies[itemIndex]
-                                            ['poster_path'],
+                                    '$baseUrl/${trendinglist[itemIndex].posterPath}',
+                                    
+                                       
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                     height: double.infinity,
@@ -155,17 +150,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 CustomCarousal(
-                    carousalName: "Only on Nextfix", topRated: trendingMovies),
+                    carousalName: "Only on Nextfix", carousalList: popularmovielist,),
                 CustomCarousal(
-                    carousalName: "Top 10 Tv shows", topRated: topratedMovies),
+                    carousalName: "Top 10 Movies", carousalList: topRatedMovielist),
                 CustomCarousal(
                     carousalName: "Continue to watch for User",
-                    topRated: topratedMovies),
-                CustomCarousal(
-                    carousalName: "Award winning film",
-                    topRated: topratedMovies),
-                CustomCarousal(
-                    carousalName: "Acrtions", topRated: topratedMovies),
+                    carousalList: upCominglist),
+                // CustomCarousal(
+                //     carousalName: "Award winning film",
+                //     topRated: topratedMovies),
+                // CustomCarousal(
+                //     carousalName: "Acrtions", topRated: topratedMovies),
               ],
             ),
           ],

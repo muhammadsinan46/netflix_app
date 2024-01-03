@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+import 'package:netflix/Api/uri_list.dart';
+
+import 'package:netflix/screens/splash_screen.dart';
 
 class ProfileWidget1 extends StatelessWidget {
   const ProfileWidget1({ required this.index
@@ -18,8 +20,7 @@ class ProfileWidget1 extends StatelessWidget {
               height: 80,
               width: 100,
               child: Image.network(
-                'http://image.tmdb.org/t/p/w500' +
-                    tvShows[index]['poster_path'],
+                 '$baseUrl/${upCominglist[index].posterPath}' ,
                 fit: BoxFit.cover,
               )),
           SizedBox(
@@ -40,12 +41,8 @@ class ProfileWidget1 extends StatelessWidget {
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ))),
-                    Align(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          "${(tvShows[index]['original_title'] != null) ? tvShows[index]['original_title'] : 'Late Night'}",
-                          style: TextStyle(fontSize: 16),
-                        )),
+               
+               
                     Align(
                         alignment: Alignment.topLeft,
                         child: Text("28 Dec"))

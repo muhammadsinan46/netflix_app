@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+
+import 'package:netflix/screens/splash_screen.dart';
 import 'package:netflix/widgets/carousal_widget.dart';
 import 'package:netflix/widgets/profile_widget.dart';
 import 'package:netflix/widgets/profile_widget2.dart';
@@ -73,8 +74,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
           ProfileWidget2(),
-          CustomCarousal(carousalName: "Trailers you have Watched", topRated: tvShows),
-          CustomCarousal(carousalName: "Continue Watching", topRated: topratedMovies),
+          CustomCarousal(carousalName: "Trailers you have Watched", carousalList: upCominglist),
+          CustomCarousal(carousalName: "Continue Watching", carousalList: topRatedMovielist),
               
         ],
       ),

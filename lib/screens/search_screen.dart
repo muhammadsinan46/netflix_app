@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+import 'package:netflix/Api/movie_model.dart';
+import 'package:netflix/Api/uri_list.dart';
+
+import 'package:netflix/screens/splash_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -10,9 +13,10 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   var _searchController = TextEditingController();
-  List SearchedMovies = [];
+  List <Movie>SearchedMovies = [];
   @override
   Widget build(BuildContext context) {
+  
     return SafeArea(
       child: Scaffold(
         
@@ -41,11 +45,11 @@ class _SearchScreenState extends State<SearchScreen> {
                   } else {
                     SearchedMovies = allMovies
                         .where((movie) =>
-                            movie['title']
+                            movie.title
                                 .toString()
                                 .toLowerCase()
                                 .contains(value.toLowerCase()) ||
-                            movie['poster_path']
+                            movie.posterPath
                                 .toString()
                                 .toLowerCase()
                                 .contains(value.toLowerCase()))
@@ -55,7 +59,9 @@ class _SearchScreenState extends State<SearchScreen> {
               },
                       ),
             ),
-            Text("Top Searches"),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text("Top Searches")),
               Expanded(
                   child: (_searchController.text.isEmpty)
                       ? GridView.builder(
@@ -69,8 +75,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               padding: const EdgeInsets.all(4.0),
                               child: Container(
                                 child: Image.network(
-                                  'https://image.tmdb.org/t/p/w500/' +
-                                      allMovies[index]['poster_path'].toString(),
+                              '$baseUrl/${allMovies[index].posterPath}'
                                 ),
                               ),
                             );
@@ -89,9 +94,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   padding: const EdgeInsets.all(4.0),
                                   child: Container(
                                     child: Image.network(
-                                      'https://image.tmdb.org/t/p/w500/' +
-                                          SearchedMovies[index]['poster_path']
-                                              .toString(),
+                                      '$baseUrl/${SearchedMovies[index].posterPath}',
                                     ),
                                   ),
                                 );

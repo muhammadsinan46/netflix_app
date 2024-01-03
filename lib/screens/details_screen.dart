@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+
+import 'package:netflix/screens/splash_screen.dart';
 
 import 'package:netflix/widgets/carousal_widget.dart';
 
@@ -143,7 +144,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                   ),
                   CustomCarousal(
-                      carousalName: "More Like This", topRated: topratedMovies),
+                      carousalName: "More Like This", carousalList: trendinglist),
                 ],
               ))
         ],

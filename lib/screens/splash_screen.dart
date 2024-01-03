@@ -1,11 +1,18 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-import 'package:netflix/Api/api_file.dart';
+import 'package:netflix/Api/movie_model.dart';
+import 'package:netflix/Api/movies_helper.dart';
 import 'package:netflix/main.dart';
-import 'package:netflix/screens/home_screen.dart';
-import 'package:tmdb_api/tmdb_api.dart';
-//import 'package:netflix/screens/home_screen.dart';
+
+List<Movie> popularmovielist = [];
+List<Movie> trendinglist = [];
+List<Movie> nowplayinglist = [];
+List<Movie> upCominglist = [];
+List<Movie> topRatedMovielist = [];
+List<Movie> allMovies = [];
+
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,36 +29,27 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
+  Map<int, dynamic>? fullLoaded;
   void loadMovies() async {
-    TMDB tmbdLogs = TMDB(ApiKeys(Apikey, APiTocken),
-        logConfig: ConfigLogger(
-          showLogs: true,
-          showErrorLogs: true,
-        ));
-    Map trendingResult = await tmbdLogs.v3.trending.getTrending();
-    Map topratedResult = await tmbdLogs.v3.movies.getTopRated();
-    Map tvShowsResult = await tmbdLogs.v3.tv.getPopular();
+    await popularLoading();
+    await topRatedLoading();
+    await upComingtLoading();
+    await trendigLoading();
 
-    List allListedMovies = [];
+    List<Movie> combinedMovies = [];
+    combinedMovies.addAll(popularmovielist);
+    combinedMovies.addAll(trendinglist);
+    combinedMovies.addAll(topRatedMovielist);
 
     setState(() {
-      trendingMovies = trendingResult['results'];
-      topratedMovies = topratedResult['results'];
-      tvShows = tvShowsResult['results'];
-      allListedMovies.addAll(trendingMovies);
-      allListedMovies.addAll(topratedMovies);
-      allListedMovies.addAll(tvShows);
-      allMovies = allListedMovies;
+      allMovies = combinedMovies;
     });
- 
-
     Timer(
         const Duration(seconds: 5),
         () => Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const MainPage())));
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +58,9 @@ class _SplashScreenState extends State<SplashScreen>
         width: MediaQuery.of(context).size.width,
         color: Colors.black,
         child: Center(
-          child: Image.asset('images/Nlogo.png', ),
+          child: Image.asset(
+            'images/Nlogo.png',
+          ),
         ),
       ),
     );

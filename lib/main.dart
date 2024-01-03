@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Netflixapp',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: const ColorScheme.dark()
@@ -69,7 +69,7 @@ class _MainPageState extends State<MainPage> {
         BottomNavigationBarItem(icon: Icon(Icons.home_max_outlined), label: "Home"),
         BottomNavigationBarItem(icon:  Icon(Icons.search), label: "Search"),
         BottomNavigationBarItem(icon: Icon(Icons.video_library), label: "New & Hot"),
-        BottomNavigationBarItem(icon: Icon(Icons.person_3_outlined), label: "My netflix"),
+        BottomNavigationBarItem(icon: Icon(Icons.person_3_outlined), label: "My Netflix"),
       ],
       onTap: (index){
         setState(() {

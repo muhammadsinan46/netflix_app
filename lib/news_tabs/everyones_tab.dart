@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+import 'package:netflix/Api/uri_list.dart';
+import 'package:netflix/screens/splash_screen.dart';
+
 
 class EveryOnesTab extends StatelessWidget {
   const EveryOnesTab({ required this.itemIndex, Key?key }):super(key: key);
@@ -7,9 +9,9 @@ class EveryOnesTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      //margin: EdgeInsets.only(left: 1, right: 10),
-      height: 400,
+    return Container(
+      margin: EdgeInsets.only(bottom: 12),
+     // height: 400,
       //color: Colors.white,
       child: Column(
      //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -17,18 +19,17 @@ class EveryOnesTab extends StatelessWidget {
         children: [
            const SizedBox(height: 10,),
           Container(
-            height: 200,
+           // height: 200,
           child:  Image.network(
-                                  'http://image.tmdb.org/t/p/w500' +
-                                      trendingMovies[itemIndex]['backdrop_path'],
+                                 '$baseUrl/${topRatedMovielist[itemIndex].backdropPath}',
                                   fit: BoxFit.cover,
                                   width:double.infinity,
-                                   height: 100,
+                                 //  height: 100,
                                 ),
           ),
           SizedBox(
             
-            height: 100,
+           // height: 100,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
          mainAxisSize: MainAxisSize.min,
@@ -52,13 +53,10 @@ class EveryOnesTab extends StatelessWidget {
           ),
        Padding(
         
-         padding: const EdgeInsets.only(bottom:8.0),
-         child: Text("An intelligence operative for a shadowy global peacekeeping agency races to stop a hacker from stealing its most valuable — and dangerous — weapon."),
+         padding: const EdgeInsets.only(bottom:8.0, left:12, right: 12 ),
+         child: Text('${topRatedMovielist[itemIndex].overview}'),
        ),
-              Align(
-               
-               alignment: Alignment.topLeft,
-               child: Text(" Starring: Gal Gadot ,Jamie Dornan ,Alia Bhatt", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),))
+     
         ],
       ),
     );

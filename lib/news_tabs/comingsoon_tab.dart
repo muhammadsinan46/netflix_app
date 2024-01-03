@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:netflix/screens/home_screen.dart';
+import 'package:netflix/Api/uri_list.dart';
+import 'package:netflix/screens/splash_screen.dart';
 
 
 class ComingSoonTab extends StatelessWidget {
@@ -10,13 +11,14 @@ class ComingSoonTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Column(
+      
       children: [
        const  SizedBox(height: 10,),
         Row(
           children: [
             const SizedBox(
               width: 50,
-              height: 500,
+            //  height: 500,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -31,21 +33,21 @@ class ComingSoonTab extends StatelessWidget {
             ),
             SizedBox(
               width: size.width - 60,
-              height: 500,
+             // height: 500,
               child: Column(children: [
                 Container(
-                  height: 250,
+                //  height: 250,
                   width: size.width,
-                  child:          Image.network(
-                                  'http://image.tmdb.org/t/p/w500' +
-                                      trendingMovies[itemIndex]['backdrop_path'],
+                  child:  
+                   Image.network( '$baseUrl/${upCominglist[itemIndex].backdropPath}',
+                                 
                                   fit: BoxFit.cover,
                                   width:200,
-                                   height: 100,
+                                  // height: 100,
                                 ),
                 ),
                 SizedBox(
-                  height: 70,
+                 // height: 70,
                   child: Row(
                                mainAxisSize: MainAxisSize.min,
                     children: [
@@ -63,15 +65,16 @@ class ComingSoonTab extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(
-                    height: 150,
+                Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 20),
+                  //  height: 150,
                     width: size.width,
                     child: Column(
                       children: [
                         Align(
                           alignment: Alignment.topLeft,
-                          child: Text("Coming on ${(trendingMovies[itemIndex]['release_date']!=null)? trendingMovies[itemIndex]['release_date']:'Dec 25'}", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
-                         Text( trendingMovies[itemIndex]['overview']
+                          child: Text("Coming on ${(upCominglist[itemIndex].releaseDate!=null)? upCominglist[itemIndex].releaseDate:'Dec 25'}", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)),
+                         Text('${ upCominglist[itemIndex].overview}'
                          )
                             ],
                     ))
