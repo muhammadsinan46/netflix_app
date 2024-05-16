@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
-
 import 'package:netflix/Api/uri_list.dart';
-
 import 'package:netflix/screens/details_screen.dart';
 import 'package:netflix/screens/splash_screen.dart';
 import 'package:netflix/widgets/carousal_widget.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:netflix/widgets/custom_button.dart';
-
-
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
@@ -92,24 +85,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .push(MaterialPageRoute(
                                             builder: (context) => DetailsScreen(
                                                   imageUrl:
-                                                      '$baseUrl/${trendinglist[itemIndex].posterPath}' 
-                                                       
-                                                            ,
+                                                      '$baseUrl/${trendinglist[itemIndex].posterPath}',
                                                   title:
-                                                      '${trendinglist[itemIndex].title}'
-                                                         ,
+                                                      '${trendinglist[itemIndex].title}',
                                                   date:
-                                                       '${trendinglist[itemIndex].releaseDate}',
+                                                      '${trendinglist[itemIndex].releaseDate}',
                                                   rate:
-                                                     '${trendinglist[itemIndex].voteAverage}',
+                                                      '${trendinglist[itemIndex].voteAverage}',
                                                   overview:
                                                       '${trendinglist[itemIndex].overview}',
                                                 )));
                                   },
                                   child: Image.network(
                                     '$baseUrl/${trendinglist[itemIndex].posterPath}',
-                                    
-                                       
                                     fit: BoxFit.cover,
                                     width: double.infinity,
                                     height: double.infinity,
@@ -119,8 +107,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               options: CarouselOptions(
                                   autoPlay: true,
                                   aspectRatio: .1,
-                                  //  enlaRrgeCenterPage: true,
-                                  // height: 220,
                                   viewportFraction: 1)),
                         ),
                         Positioned(
@@ -128,13 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           left: 200,
                           child: Row(
                             children: [
-                              CustomButton(
-                                  name: "Play",
-                                  icon: Icon(Icons.play_arrow),
-                                  radius: 10,
-                                  Bheight: 50,
-                                  Bwidth: 100,
-                                  fontSize: 18),
+                              CustomButton( name: "Play",icon: Icon(Icons.play_arrow),radius: 10,Bheight: 50, Bwidth: 100,fontSize: 18),
                               CustomButton(
                                   name: "My List",
                                   icon: Icon(Icons.add),
@@ -149,18 +129,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                CustomCarousal(
-                    carousalName: "Only on Nextfix", carousalList: popularmovielist,),
-                CustomCarousal(
-                    carousalName: "Top 10 Movies", carousalList: topRatedMovielist),
-                CustomCarousal(
-                    carousalName: "Continue to watch for User",
-                    carousalList: upCominglist),
-                // CustomCarousal(
-                //     carousalName: "Award winning film",
-                //     topRated: topratedMovies),
-                // CustomCarousal(
-                //     carousalName: "Acrtions", topRated: topratedMovies),
+                CustomCarousal( carousalName: "Only on Nextfix",carousalList: popularmovielist ),
+                CustomCarousal(carousalName: "Top 10 Movies",carousalList: topRatedMovielist),
+                CustomCarousal(carousalName: "Continue to watch for User", carousalList: upCominglist),
               ],
             ),
           ],

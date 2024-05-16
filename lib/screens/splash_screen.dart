@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
   }
 
-  Map<int, dynamic>? fullLoaded;
+
   void loadMovies() async {
     await popularLoading();
     await topRatedLoading();
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen>
       allMovies = combinedMovies;
     });
     Timer(
-        const Duration(seconds: 5),
+        const Duration(milliseconds:1500),
         () => Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const MainPage())));
   }
@@ -58,9 +58,7 @@ class _SplashScreenState extends State<SplashScreen>
         width: MediaQuery.of(context).size.width,
         color: Colors.black,
         child: Center(
-          child: Image.asset(
-            'images/Nlogo.png',
-          ),
+          child: Image.network('https://i.pinimg.com/originals/f6/b1/1b/f6b11bd53411d94338117381cf9a9b9b.gif',scale:.1,)
         ),
       ),
     );

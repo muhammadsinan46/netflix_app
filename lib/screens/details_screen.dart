@@ -35,10 +35,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        leading:  IconButton(
-    icon: Icon(Icons.arrow_back, ),
-    onPressed: () => Navigator.of(context).popUntil((route) => route.isFirst),
-  ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+          ),
+          onPressed: () =>
+              Navigator.of(context).popUntil((route) => route.isFirst),
+        ),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
       ),
       body: ListView(
@@ -144,7 +147,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ),
                   ),
                   CustomCarousal(
-                      carousalName: "More Like This", carousalList: trendinglist),
+                      carousalName: "More Like This",
+                      carousalList: trendinglist),
                 ],
               ))
         ],

@@ -38,6 +38,7 @@ dependencies:
   carousel_slider: ^4.2.1
   linear_timer:
   http:
+  intl:
 
 dev_dependencies:
   flutter_test:

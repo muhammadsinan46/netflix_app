@@ -8,6 +8,7 @@ import 'package:netflix/screens/splash_screen.dart';
 
 Future <List<Movie>> upComingtLoading()async{
 
+
   final upcomingResponse = await http.get(Uri.parse(upComing));
   if(upcomingResponse.statusCode==200){
     var upComingData = jsonDecode(upcomingResponse.body);
@@ -73,3 +74,5 @@ Future<List<Movie>> trendigLoading() async {
     throw Exception("failed to get the data");
   }
 }
+
+
